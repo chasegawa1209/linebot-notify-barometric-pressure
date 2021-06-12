@@ -28,9 +28,9 @@ var PressureLevelMap = map[string]string {
 }
 
 type BarometricPressure struct {
-    NowLevel        string
-    After1HourLevel string
-    After2HourLevel string
+    NowLevel        int
+    After1HourLevel int
+    After2HourLevel int
 }
 
 type BarometricPressuresByZutool struct {

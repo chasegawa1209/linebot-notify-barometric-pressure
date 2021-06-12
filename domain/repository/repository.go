@@ -2,10 +2,12 @@ package repository
 
 import (
 	"strconv"
+
+    "github.com/chasegawa1209/linebot-notify-barometric-pressure/infra/linestore"
 	"github.com/chasegawa1209/linebot-notify-barometric-pressure/infra/api"
 	"github.com/chasegawa1209/linebot-notify-barometric-pressure/domain/model"
-	"go.uber.org/zap"
-    "github.com/chasegawa1209/linebot-notify-barometric-pressure/infra/linestore"
+
+    "go.uber.org/zap"
 )
 
 // RepositoryInterface リポジトリのインターフェース
@@ -38,7 +40,7 @@ func (r *Repository) GetBarometricPressure(hour int) (*model.BarometricPressure,
         return nil, err
     }
 
-    var nowLevel, After1HourLevel, After2HourLevel string
+    var nowLevel, After1HourLevel, After2HourLevel int
     for _, v := range barometricPressure.Today {
         intTime, err := strconv.Atoi(v.Time)
         if err != nil {
@@ -46,11 +48,20 @@ func (r *Repository) GetBarometricPressure(hour int) (*model.BarometricPressure,
         }
         switch intTime {
         case hour:
-            nowLevel = v.PressureLevel
+            nowLevel, err = strconv.Atoi(v.PressureLevel)
+            if err != nil {
+                return nil, err
+            }
         case hour+1:
-            After1HourLevel = v.PressureLevel
+            After1HourLevel, err = strconv.Atoi(v.PressureLevel)
+            if err != nil {
+                return nil, err
+            }
         case hour+2:
-            After2HourLevel = v.PressureLevel
+            After2HourLevel, err = strconv.Atoi(v.PressureLevel)
+            if err != nil {
+                return nil, err
+            }
         }
     }
 
