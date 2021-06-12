@@ -1,7 +1,7 @@
 module github.com/chasegawa1209/linebot-notify-barometric-pressure
 
-// +heroku goVersion go1.16g
-go 1.12
+// +heroku goVersion go1.16
+go 1.16
 
 require (
 	github.com/kyokomi/emoji v2.2.4+incompatible
