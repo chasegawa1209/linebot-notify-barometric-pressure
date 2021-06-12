@@ -14,17 +14,17 @@ const (
 
 const (
     PressureLevelStrOK              = "通常"
-    PressureLevelStrSomewhatWarning = emoji.Sprint(":arrow_heading_down:") + "やや注意"
-    PressureLevelStrWarning         = emoji.Sprint(":warning:") + "注意"
-    PressureLevelStrBomb            = emoji.Sprint(":bomb:") + "警戒"
+    PressureLevelStrSomewhatWarning = "やや注意"
+    PressureLevelStrWarning         = "注意"
+    PressureLevelStrBomb            = "警戒"
 )
 
 var PressureLevelMap = map[int]string {
     PressureLevelIntOK0:             PressureLevelStrOK,
     PressureLevelIntOK1:             PressureLevelStrOK,
-    PressureLevelIntSomewhatWarning: PressureLevelStrSomewhatWarning,
-    PressureLevelIntWarning:         PressureLevelStrWarning,
-    PressureLevelIntBomb:            PressureLevelStrBomb,
+    PressureLevelIntSomewhatWarning: emoji.Sprint(":arrow_heading_down:") + PressureLevelStrSomewhatWarning,
+    PressureLevelIntWarning:         emoji.Sprint(":warning:") + PressureLevelStrWarning,
+    PressureLevelIntBomb:            emoji.Sprint(":bomb:") + PressureLevelStrBomb,
 }
 
 type BarometricPressure struct {
