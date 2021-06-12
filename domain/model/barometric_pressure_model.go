@@ -5,11 +5,11 @@ import (
 )
 
 const (
-    PressureLevelIntOK0             = "0"
-    PressureLevelIntOK1             = "1"
-    PressureLevelIntSomewhatWarning = "2"
-    PressureLevelIntWarning         = "3"
-    PressureLevelIntBomb            = "4"
+    PressureLevelIntOK0             = iota
+    PressureLevelIntOK1
+    PressureLevelIntSomewhatWarning
+    PressureLevelIntWarning
+    PressureLevelIntBomb
 )
 
 const (
@@ -19,7 +19,7 @@ const (
     PressureLevelStrBomb            = "警戒"
 )
 
-var PressureLevelMap = map[string]string {
+var PressureLevelMap = map[int]string {
     PressureLevelIntOK0:             PressureLevelStrOK,
     PressureLevelIntOK1:             PressureLevelStrOK,
     PressureLevelIntSomewhatWarning: emoji.Sprint(":arrow_heading_down:") + PressureLevelStrSomewhatWarning,
