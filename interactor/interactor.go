@@ -1,6 +1,7 @@
 package interactor
 
 import (
+	"github.com/chasegawa1209/linebot-notify-barometric-pressure/infra/api"
 	"github.com/chasegawa1209/linebot-notify-barometric-pressure/domain/repository"
 	"github.com/chasegawa1209/linebot-notify-barometric-pressure/infra/linestore"
 	"github.com/chasegawa1209/linebot-notify-barometric-pressure/usecase"
@@ -43,7 +44,9 @@ func (i *Interactor) NewUsecase() usecase.UsecaseInterface {
 // NewRepository リポジトリ
 func (i *Interactor) NewRepository() repository.RepositoryInterface {
     return repository.NewRepository(
-        i.NewLineStore(),
+       i.logger,
+       i.NewLineStore(),
+       i.NewAPI(),
     )
 }
 
@@ -59,4 +62,11 @@ func (i *Interactor) NewLineStore() linestore.LineStoreInterface {
         panic(err)
     }
     return linestore
+}
+
+// NewAPI API接続
+func (i *Interactor) NewAPI() api.APIInterface {
+    return api.NewAPI(
+        i.placeID,
+    )
 }
