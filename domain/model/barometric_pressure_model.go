@@ -5,11 +5,11 @@ import (
 )
 
 const (
-    PressureLevelIntOK0             = iota
-    PressureLevelIntOK1
-    PressureLevelIntSomewhatWarning
-    PressureLevelIntWarning
-    PressureLevelIntBomb
+    PressureLevelIntOK0             = "0"
+    PressureLevelIntOK1             = "1"
+    PressureLevelIntSomewhatWarning = "2"
+    PressureLevelIntWarning         = "3"
+    PressureLevelIntBomb            = "4"
 )
 
 const (
@@ -19,7 +19,7 @@ const (
     PressureLevelStrBomb            = "警戒"
 )
 
-var PressureLevelMap = map[int]string {
+var PressureLevelMap = map[string]string {
     PressureLevelIntOK0:             PressureLevelStrOK,
     PressureLevelIntOK1:             PressureLevelStrOK,
     PressureLevelIntSomewhatWarning: emoji.Sprint(":arrow_heading_down:") + PressureLevelStrSomewhatWarning,
@@ -28,15 +28,15 @@ var PressureLevelMap = map[int]string {
 }
 
 type BarometricPressure struct {
-    NowLevel        int
-    After1HourLevel int
-    After2HourLevel int
+    NowLevel        string
+    After1HourLevel string
+    After2HourLevel string
 }
 
 type BarometricPressuresByZutool struct {
     PlaceName        string                        `json:"place_name"`
-    PlaceID          int                           `json:"place_id"`
-    PrefecturesID    int                           `json:"prefecture_id"`
+    PlaceID          string                        `json:"place_id"`
+    PrefecturesID    string                        `json:"prefecture_id"`
     DateTime         string                        `json:"dateTime"`
     Yesterday        []*BarometricPressureByZutool `json:"yesterday"`
     Today            []*BarometricPressureByZutool `json:"today"`
@@ -45,9 +45,9 @@ type BarometricPressuresByZutool struct {
 }
 
 type BarometricPressureByZutool struct {
-    Time          int     `json:"time"`
-    Weather       int     `json:"weather"`
-    Temp          float64 `json:"temp"`
-    Pressure      float64 `json:"pressure"`
-    PressureLevel int     `json:"pressure_level"`
+    Time          string `json:"time"`
+    Weather       string `json:"weather"`
+    Temp          string `json:"temp"`
+    Pressure      string `json:"pressure"`
+    PressureLevel string `json:"pressure_level"`
 }

@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"strconv"
 	"github.com/chasegawa1209/linebot-notify-barometric-pressure/infra/api"
 	"github.com/chasegawa1209/linebot-notify-barometric-pressure/domain/model"
 	"go.uber.org/zap"
@@ -37,9 +38,13 @@ func (r *Repository) GetBarometricPressure(hour int) (*model.BarometricPressure,
         return nil, err
     }
 
-    var nowLevel, After1HourLevel, After2HourLevel int
+    var nowLevel, After1HourLevel, After2HourLevel string
     for _, v := range barometricPressure.Today {
-        switch v.Time {
+        intTime, err := strconv.Atoi(v.Time)
+        if err != nil {
+            return nil, err
+        }
+        switch intTime {
         case hour:
             nowLevel = v.PressureLevel
         case hour+1:
