@@ -43,7 +43,6 @@ func (i *Interactor) NewUsecase() usecase.UsecaseInterface {
 // NewRepository リポジトリ
 func (i *Interactor) NewRepository() repository.RepositoryInterface {
     return repository.NewRepository(
-        i.logger,
         i.NewLineStore(),
     )
 }

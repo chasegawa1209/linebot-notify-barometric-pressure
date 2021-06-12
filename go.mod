@@ -1,6 +1,6 @@
 module github.com/chasegawa1209/linebot-notify-barometric-pressure
 
-// +heroku goVersion go1.16
+// +heroku goVersion go1.16g
 go 1.16
 
 require (
