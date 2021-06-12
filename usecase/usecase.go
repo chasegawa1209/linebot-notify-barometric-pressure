@@ -40,7 +40,7 @@ func (u *Usecase) Exec() *UsecaseResult {
     }()
 
     // 気圧取得
-    barometricPressure, err := u.repository.GetBarometricPressure()
+    barometricPressure, err := u.repository.GetBarometricPressure(now.Hour())
     if err != nil {
         result.Err = err
         return result

@@ -13,7 +13,7 @@ type Interactor struct {
     lineAccessToken string
     lineSecret      string
     lineRoomID      string
-    placeID         int
+    placeID         string
 }
 
 // NewInteractor コンストラクタ
@@ -22,12 +22,14 @@ func NewInteractor(
     lineAccessToken string,
     lineSecret string,
     lineRoomID string,
+    placeID    string,
 ) *Interactor {
     return &Interactor{
         logger:          logger,
         lineAccessToken: lineAccessToken,
         lineSecret:      lineSecret,
         lineRoomID:      lineRoomID,
+        placeID:         placeID,
     }
 }
 
