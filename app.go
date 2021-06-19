@@ -14,7 +14,7 @@ func main() {
     PLACE_ID := os.Getenv("PLACE_ID")
 
     // logger
-    DEBUG = os.Getenv("DEBUG")
+    DEBUG := os.Getenv("DEBUG")
     var isDebug bool
     if DEBUG == "true" {
         isDebug = true
