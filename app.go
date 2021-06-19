@@ -14,7 +14,13 @@ func main() {
     PLACE_ID := os.Getenv("PLACE_ID")
 
     // logger
-    isDebug := true
+    DEBUG = os.Getenv("DEBUG")
+    var isDebug bool
+    if DEBUG == "true" {
+        isDebug = true
+    } else {
+        isDebug = false
+    }
     logger := logging.NewZapLogger(isDebug)
 
     i := interactor.NewInteractor(logger, LINE_ACCESS_TOKEN, LINE_SECRET, LINE_ROOM_ID, PLACE_ID)
