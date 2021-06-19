@@ -47,7 +47,7 @@ func (u *Usecase) Exec() *UsecaseResult {
     }
 
     // 警戒レベルがあるかチェック
-    if barometricPressure.NowLevel > 1 || barometricPressure.After1HourLevel > 1 || barometricPressure.After2HourLevel > 1 {
+    if barometricPressure.NowLevel > model.PressureLevelIntSomewhatWarning || barometricPressure.After1HourLevel > model.PressureLevelIntSomewhatWarning || barometricPressure.After2HourLevel > model.PressureLevelIntSomewhatWarning {
         // メッセージ作成
         message := createMessage(barometricPressure)
 
